@@ -104,7 +104,7 @@ class Pipe(pygame.sprite.Sprite):
     def update(self):
         self.rect.x -= scroll_speed
         if self.rect.right < 0:
-            self.kill
+            self.kill()
 
 class Button():
     def __init__(self, x, y, image):
@@ -184,14 +184,14 @@ while run:
             ground_scroll = 0
         pipe_group.update()
 
-if game_over == True:
-    if button.draw() == True:
-        game_over = False
-        score = reset_game()
+    if game_over == True:
+        if button.draw() == True:
+            game_over = False
+            score = reset_game()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-            
+
         if event.type == pygame.MOUSEBUTTONDOWN and flying == False and game_over == False:
             flying = True
 
